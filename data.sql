@@ -13,3 +13,4 @@ INSERT INTO public.animals(
 INSERT INTO public.animals(
 	name, date_of_birth, escape_attempts, neutered, weight_kg)
 	VALUES ('Devimon', '2017-05-12', 5, true, 11);
+	
