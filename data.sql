@@ -44,4 +44,6 @@ INSERT INTO public.animals(
 	INSERT INTO public.species(
 	name)
 	VALUES ('Pokemon'),('Digimon');
-	
+	------------modify animals to include species_id --------------
+	UPDATE animals SET species_id = 2 WHERE name LIKE '%mon';
+UPDATE animals SET species_id = 1 WHERE species_id IS NULL;
