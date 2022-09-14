@@ -45,3 +45,14 @@ SELECT avg(weight_kg) as average_weight FROM public.animals;
 SELECT max(escape_attempts) as escape_attempts, neutered from public.animals GROUP BY neutered;
 SELECT min(weight_kg) as min_age, max(weight_kg) as max_age, neutered FROM public.animals GROUP BY neutered;
 SELECT avg(escape_attempts) as avg_escape_attempt, neutered FROM public.animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-01-01' GROUP BY neutered;
+
+-------SQL Queris using joins-------------------------------------------------------
+select name as aimals_owned_by_Melody_Pond from animals A JOIN owners O ON A.owner_id = O.id WHERE full_name = 'Melody Pond';
+select A.name as pokemon_animals from animals A JOIN species S ON A.species_id = S.id WHERE S.name = 'Pokemon';
+select A.name as animal_names, O.full_name as owners from animals A RIGHT JOIN owners O ON A.owner_id = O.id;
+select count(S.name) as number_of_animals, S.name as species  from animals A JOIN species S ON A.species_id = S.id GROUP BY S.name;
+SELECT A.name as Digimon_Animals, O.full_name as owned_by from animals A JOIN owners O ON A.owner_id = O.id JOIN species S ON A.species_id = S.id where S.name = 'Digimon' AND O.full_name = 'Jennifer Orwell';
+select A.name as animal_names from animals A JOIN owners O ON A.owner_id = O.id where O.full_name = 'Dean Winchester' AND A.escape_attempts = 0;
+select count(A.owner_id) as number_of_owned_animals, O.full_name as owner_name from owners O JOIN animals A ON A.owner_id = O.id GROUP BY O.full_name;
+
+
