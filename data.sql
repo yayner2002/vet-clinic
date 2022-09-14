@@ -40,3 +40,8 @@ INSERT INTO public.animals(
 	INSERT INTO public.owners(
 	full_name, age)
 	VALUES ('Sam Smith',34 ),('Jennifer Orwell',19 ),('Bob',45 ),('Melody Pond',77 ),('Dean Winchester',14 ),('Jodie Whittaker',38 );
+	---------------insert data into species table---------------
+	INSERT INTO public.species(
+	name)
+	VALUES ('Pokemon'),('Digimon');
+	
