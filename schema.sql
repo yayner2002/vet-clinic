@@ -46,4 +46,12 @@ CREATE TABLE IF NOT EXISTS public.vets
     CONSTRAINT vets_pkey PRIMARY KEY (id)
 )
 
-----------------------
+------------create specialization table structure------------------------------
+CREATE TABLE specializations (
+	species_id integer, 
+	vets_id integer,
+	PRIMARY KEY(species_id, vets_id),
+	FOREIGN  KEY(species_id) REFERENCES species(id) ON DELETE CASCADE,
+	FOREIGN KEY(vets_id) REFERENCES vets(id) ON DELETE CASCADE
+)
+
