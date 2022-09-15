@@ -63,6 +63,15 @@ INSERT INTO public.vets(
 	('Stephanie Mendez', 64, '1981-05-04'),
 	('Jack Harkness', 38, '2008-06-08');
 
-	-----------------------insert data for 
+	---------------------insert data for specializations--------------------------
+
+	INSERT INTO public.specializations(
+	species_id, vets_id)
+	VALUES (1, 1),
+	(1, 3),
+	(2, 3),
+	(2, 4);
+
+	
 
 
