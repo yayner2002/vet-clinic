@@ -55,11 +55,19 @@ CREATE TABLE specializations (
 	FOREIGN KEY(vets_id) REFERENCES vets(id) ON DELETE CASCADE
 )
 ------------- create visits table structure-------------------------------------
-CREATE TABLE visits (
-	animal_id integer, 
-	vets_id integer,
-	visit_date date,
-	PRIMARY KEY(animal_id, vets_id),
-	FOREIGN  KEY(animal_id) REFERENCES animals(id) ON DELETE CASCADE,
-	FOREIGN KEY(vets_id) REFERENCES vets(id) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS public.visits
+(
+    animal_id integer NOT NULL,
+    vets_id integer NOT NULL,
+    visit_date date NOT NULL,
+    CONSTRAINT visits_pkey PRIMARY KEY (animal_id, vets_id, visit_date),
+    CONSTRAINT visits_animal_id_fkey FOREIGN KEY (animal_id)
+        REFERENCES public.animals (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE,
+    CONSTRAINT visits_vets_id_fkey FOREIGN KEY (vets_id)
+        REFERENCES public.vets (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
 )
+
