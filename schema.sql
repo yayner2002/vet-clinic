@@ -54,4 +54,12 @@ CREATE TABLE specializations (
 	FOREIGN  KEY(species_id) REFERENCES species(id) ON DELETE CASCADE,
 	FOREIGN KEY(vets_id) REFERENCES vets(id) ON DELETE CASCADE
 )
-
+------------- create visits table structure-------------------------------------
+CREATE TABLE visits (
+	animal_id integer, 
+	vets_id integer,
+	visit_date date,
+	PRIMARY KEY(animal_id, vets_id),
+	FOREIGN  KEY(animal_id) REFERENCES animals(id) ON DELETE CASCADE,
+	FOREIGN KEY(vets_id) REFERENCES vets(id) ON DELETE CASCADE
+)
