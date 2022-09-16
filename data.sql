@@ -54,4 +54,44 @@ UPDATE animals SET owner_id = 3 WHERE name = 'Devimon' OR name = 'Plantmon';
 UPDATE animals SET owner_id = 4 WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
 UPDATE animals SET owner_id = 5 WHERE name = 'Angemon' OR name = 'Boarmon';
 
+---------inset data for vets-----------------------------------------------------
+
+INSERT INTO public.vets(
+	name, age, date_of_graduation)
+	VALUES ('William Tatcher', 45, '2000-04-23'),
+	('Maisy Smith', 26, '2019-01-17'),
+	('Stephanie Mendez', 64, '1981-05-04'),
+	('Jack Harkness', 38, '2008-06-08');
+
+	---------------------insert data for specializations--------------------------
+
+	INSERT INTO public.specializations(
+	species_id, vets_id)
+	VALUES (1, 1),
+	(1, 3),
+	(2, 3),
+	(2, 4);
+	-------------------insert data into the visits table---------------------------------
+	INSERT INTO public.visits(
+	animal_id, vets_id, visit_date)
+	VALUES (12, 1, '2020-05-24'),
+	(12, 3, '2020-07-22'),
+	(13, 4, '2021-02-02'),
+	(14, 2, '2020-01-05'),
+	(14, 2, '2020-03-08'),
+	(14, 2, '2020-05-14'),
+	(15, 3, '2021-05-04'),
+	(16, 4, '2021-02-24'),
+	(17, 2, '2019-12-21'),
+	(17, 1, '2020-08-10'),
+	(17, 2, '2021-04-07'),
+	(18, 3, '2019-09-29'),
+	(19, 4, '2020-10-03'),
+	(19, 4, '2020-11-04'),
+	(20, 2, '2019-01-24'),
+	(20, 2, '2019-05-15'),
+	(20, 2, '2020-02-27'),
+	(20, 2, '2020-08-03'),
+	(21, 3, '2020-05-24'),
+	(21, 1, '2021-01-11');
 
