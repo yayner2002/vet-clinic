@@ -56,8 +56,14 @@ select A.name as animal_names from animals A JOIN owners O ON A.owner_id = O.id 
 select count(A.owner_id) as number_of_owned_animals, O.full_name as owner_name from owners O JOIN animals A ON A.owner_id = O.id GROUP BY O.full_name;
 
 --------------SQL queries Many to Many------------------
-SELECT A.name, V.name, Vi.visit_date from animals A JOIN visits Vi ON A.id = Vi.animal_id JOIN vets V ON Vi.vets_id = V.id WHERE V.name = 'William Tatcher' ORDER BY visit_date DESC limit 1;
+SELECT A.name as animal_name, V.name as vet_name, Vi.visit_date from animals A JOIN visits Vi ON A.id = Vi.animal_id JOIN vets V ON Vi.vets_id = V.id WHERE V.name = 'William Tatcher' ORDER BY visit_date DESC limit 1;
+
 select V.name, count(Vi.animal_id) as num_of_visited_animal from visits Vi JOIN vets V ON V.id = Vi.vets_id WHERE V.name = 'Stephanie Mendez' GROUP BY V.name;
-SELECT V.name, S.name from species S full join specializations sp on sp.species_id = S.id FULL JOIN vets V on V.id = sp.vets_id;
+select V.name as vet_name, count(Vi.animal_id) as num_of_visited_animal from visits Vi JOIN vets V ON V.id = Vi.vets_id WHERE V.name = 'Stephanie Mendez' GROUP BY V.name;
+SELECT V.name as vet_name, S.name as species_name from species S full join specializations sp on sp.species_id = S.id FULL JOIN vets V on V.id = sp.vets_id;
 SELECT A.name as animal_name, V.name as vet_name, Vi.visit_date from animals A join visits Vi on Vi.animal_id = A.id JOIN vets V on Vi.vets_id = V.id WHERE V.name = 'Stephanie Mendez' group by A.name, V.name, Vi.visit_date having Vi.visit_date between '2020-04-01' AND '2020-08-30';
 select count(A.name) as num_of_visits, A.name as animal_name FROM animals A join visits Vi on Vi.animal_id = A.id join vets V on Vi.vets_id = V.id GROUP BY A.name;
+select A.name as animal_name, V.name as vet_name, Vi.visit_date from animals A join visits Vi on Vi.animal_id = A.id join vets V on V.id = Vi.vets_id where V.name = 'Maisy Smith' ORDER BY Vi.visit_date ASC LIMIT 1;
+select A.name as animal_name, V.name as vet_name, Vi.visit_date from animals A join visits Vi on Vi.animal_id = A.id join vets V on V.id = Vi.vets_id ORDER BY Vi.visit_date DESC;
+SELECT A.name as animal_name, S.name as species_name, V.name as vet_name from animals A full join species S on S.id = A.species_id full join specializations Sp on Sp.species_id = S.id full join vets V on V.id = Sp.vets_id full join visits Vi on Vi.animal_id = A.id;
+SELECT V.name as vet_name, A.name as animal_name, S.name as species_name from visits Vi join animals A on A.id = Vi.animal_id join vets V on V.id = Vi.vets_id join species S on S.id = A.species_id where V.name = 'Maisy Smith' group by S.name, V.name, A.name;
