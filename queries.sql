@@ -70,3 +70,5 @@ SELECT V.name as vet_name, A.name as animal_name, S.name as species_name from vi
 --------------query plan and indexing-----------
 explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
 CREATE INDEX visits_asc ON visits(animal_id ASC);
+explain analyze SELECT * FROM visits where vet_id = 2;
+CREATE INDEX visits_vet_asc ON visits(vet_id ASC);
