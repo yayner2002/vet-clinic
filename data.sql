@@ -94,4 +94,6 @@ INSERT INTO public.vets(
 	(20, 2, '2020-08-03'),
 	(21, 3, '2020-05-24'),
 	(21, 1, '2021-01-11');
+------------query plan and indexing---------------
+INSERT INTO visits (animal_id, vet_id, date_of_visit) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
 
