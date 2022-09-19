@@ -70,4 +70,6 @@ CREATE TABLE IF NOT EXISTS public.visits
         ON UPDATE NO ACTION
         ON DELETE CASCADE
 )
+---------- query plan and indexing-------------------
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
 
