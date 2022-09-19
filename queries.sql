@@ -67,3 +67,10 @@ select A.name as animal_name, V.name as vet_name, Vi.visit_date from animals A j
 select A.name as animal_name, V.name as vet_name, Vi.visit_date from animals A join visits Vi on Vi.animal_id = A.id join vets V on V.id = Vi.vets_id ORDER BY Vi.visit_date DESC;
 SELECT A.name as animal_name, S.name as species_name, V.name as vet_name from animals A full join species S on S.id = A.species_id full join specializations Sp on Sp.species_id = S.id full join vets V on V.id = Sp.vets_id full join visits Vi on Vi.animal_id = A.id;
 SELECT V.name as vet_name, A.name as animal_name, S.name as species_name from visits Vi join animals A on A.id = Vi.animal_id join vets V on V.id = Vi.vets_id join species S on S.id = A.species_id where V.name = 'Maisy Smith' group by S.name, V.name, A.name;
+--------------query plan and indexing-----------
+explain analyze SELECT COUNT(*) FROM visits where animal_id = 4;
+CREATE INDEX visits_asc ON visits(animal_id ASC); --after index improve execution time
+explain analyze SELECT * FROM visits where vet_id = 2;
+CREATE INDEX visits_vet_asc ON visits(vet_id ASC); --after index improve execution time
+explain analyze SELECT * FROM owners where email = 'owner_18327@mail.com';
+CREATE INDEX owners_email_asc ON owners(email ASC);--after index improve execution time
