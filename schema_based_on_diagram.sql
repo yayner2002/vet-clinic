@@ -27,3 +27,18 @@ CREATE TABLE IF NOT EXISTS public.medical_histories
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
+
+------------create medical_histories_treatments table many to many--------
+CREATE TABLE IF NOT EXISTS public.medical_histories_treatments
+(
+    treatment_id integer,
+    medical_history_id integer,
+    CONSTRAINT fk_medical_hist_treat FOREIGN KEY (medical_history_id)
+        REFERENCES public.medical_histories (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT fk_treat_hist_med FOREIGN KEY (treatment_id)
+        REFERENCES public.treatments (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
