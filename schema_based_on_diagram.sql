@@ -75,3 +75,11 @@ CREATE TABLE IF NOT EXISTS public.invoice_items
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
+
+-----------create index for all foreign keys-----------
+CREATE INDEX patient_asc ON medical_histories (patient_id ASC);
+CREATE INDEX medical_hist ON invoices (medical_history_id ASC);
+CREATE INDEX invoice_items_inv ON invoice_items (invoice_id ASC);
+CREATE INDEX invoice_items_treat ON invoice_items (treatment_id ASC);
+CREATE INDEX med_history_asc ON medical_histories_treatments (medical_history_id ASC);
+CREATE INDEX med_history_treat_asc ON medical_histories_treatments (treatment_id ASC);
